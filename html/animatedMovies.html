@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Xenos Movie - Hoạt Hình</title>
+    <title>Xenos Movie</title>
 
     <!-- Preconnect to required origins -->
     <link rel="preconnect" href="https://phimapi.com" />
@@ -56,7 +56,6 @@
         font-family: "Roboto", sans-serif;
       }
 
-      /* Loader Animation */
       /* Loader Animation */
       .loading-overlay {
         position: fixed;
@@ -474,6 +473,7 @@
         <span></span>
       </div>
     </div>
+
     <!-- Carousel Header -->
     <header class="animate-me" data-delay="200">
       <div
@@ -528,7 +528,7 @@
           </div>
           <div class="carousel-item">
             <img
-              src="https://phimimg.com/upload/vod/20250224-1/45661fa96f864849ba1272a970e8fede.jpg"
+              src="https://scontent.fsgn24-1.fna.fbcdn.net/v/t39.30808-6/476157140_122173743290281145_6364617169106895772_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OT0bwURrT18Q7kNvgHJA6MP&_nc_oc=Adh817NjL2nc4Om2FGiNWtOfKUXhN9Bu1CQNt8g7bvbcEsOFcGxE4r8gU5y_J3K6JyVaX65OlPVSEfnk02V_Nfzx&_nc_zt=23&_nc_ht=scontent.fsgn24-1.fna&_nc_gid=ADZE0qn70G7OkwdJVNd2szr&oh=00_AYC6kR2UMwVseqthlEIfV_Ko1Z4-tMcdWNmfS5W_ZP11CQ&oe=67B9EA4D"
               class="d-block w-100"
               alt="Image 3"
             />
@@ -610,7 +610,7 @@
               </a>
               <ul class="dropdown-menu show" aria-labelledby="categoryDropdown">
                 <li>
-                  <a class="dropdown-item active" href="./animatedMovies.html">
+                  <a class="dropdown-item" href="./animatedMovies.html">
                     <i class="fas fa-dragon"></i> Hoạt Hình
                     <span class="genre-pill">250+</span>
                   </a>
@@ -664,7 +664,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="./tvshow.html">
+                  <a class="dropdown-item active" href="./tvshow.html">
                     <i class="fas fa-video"></i> TV Show
                     <span class="genre-pill">70+</span>
                   </a>
@@ -701,27 +701,19 @@
 
     <!-- Main Content -->
     <div class="container mt-4">
-      <h2 class="section-title animate-me" data-delay="300">
-        <i class="fas fa-dragon me-2"></i>Phim Hoạt Hình
-      </h2>
+      <h2>Hoạt hình</h2>
       <div class="scroll-container animate-me" data-delay="400">
         <div class="row movie-list" id="movieList">
           <!-- Movies will be loaded here by JavaScript -->
         </div>
       </div>
 
-      <!-- Thêm phân trang -->
-      <nav
-        aria-label="Page navigation"
-        class="mt-4 animate-me"
-        data-delay="700"
-      >
+      <!-- Phân trang -->
+      <nav aria-label="Page navigation" class="mt-4">
         <ul class="pagination justify-content-center" id="pagination">
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous" id="prevPage">
-              <span aria-hidden="true"
-                ><i class="fas fa-chevron-left"></i
-              ></span>
+              <span aria-hidden="true">&laquo;</span>
             </a>
           </li>
           <li class="page-item">
@@ -735,9 +727,7 @@
           </li>
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Next" id="nextPage">
-              <span aria-hidden="true"
-                ><i class="fas fa-chevron-right"></i
-              ></span>
+              <span aria-hidden="true">&raquo;</span>
             </a>
           </li>
         </ul>
@@ -758,27 +748,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Search Handler -->
     <script src="./../js/searchHandler.js"></script>
-    <!-- Phim Bộ API -->
+    <!-- TV Show API -->
     <script src="./../js/animatedMovies.js"></script>
     <!-- Load Effects -->
     <script src="./../js/pageLoadEffects.js"></script>
-
     <script>
       // Giả lập độ trễ 2 giây để kiểm tra
       setTimeout(function () {
         const loading = document.getElementById("loading");
         loading.style.display = "none";
-      }, 2000); // 2000ms = 2 giây
 
-      // Navbar scroll effect
-      window.addEventListener("scroll", function () {
-        const navbar = document.querySelector(".navbar");
-        if (window.scrollY > 100) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-      });
+        // Thêm lớp 'visible' để kích hoạt hiệu ứng
+        const elements = document.querySelectorAll(".animate-me");
+        elements.forEach((element) => {
+          element.classList.add("visible");
+        });
+      }, 2000); // 2000ms = 2 giây
       // Kiểm tra kích thước màn hình và thêm class 'show' cho dropdown-menu
       document.addEventListener("DOMContentLoaded", function () {
         const dropdownMenu = document.querySelector(".dropdown-menu");
@@ -789,7 +774,15 @@
           dropdownMenu.classList.remove("show"); // Đảm bảo không có class 'show' trên mobile
         }
       });
-
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 100) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
       // Cập nhật lại khi thay đổi kích thước cửa sổ
       window.addEventListener("resize", function () {
         const dropdownMenu = document.querySelector(".dropdown-menu");
