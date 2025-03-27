@@ -29,7 +29,7 @@ function displayAnimatedMovies(movies) {
     const movieDiv = document.createElement("div");
     movieDiv.className = "col-lg-3 col-md-4 col-sm-6 col-12 my-3";
     movieDiv.onclick = () =>
-      (location.href = `./movieDetails.html?slug=${movie.slug}`);
+      (location.href = `./html/movieDetails.html?slug=${movie.slug}`);
 
     // In the displayAnimatedMovies function
     movieDiv.innerHTML = `
@@ -40,7 +40,7 @@ function displayAnimatedMovies(movies) {
                             alt="${movie.name}"
                             loading="lazy"
                             onerror="this.src='https://via.placeholder.com/300x450?text=No+Image'">
-                        <div class="card-overlay" onclick="location.href='./movieDetails.html?slug=${
+                        <div class="card-overlay" onclick="location.href='./html/movieDetails.html?slug=${
                           movie.slug
                         }'">
                             <div class="overlay-content">
@@ -58,7 +58,7 @@ function displayAnimatedMovies(movies) {
                             <i class="fas fa-bookmark"></i>
                         </div>
                     </div>
-                    <div class="card-body" onclick="location.href='./movieDetails.html?slug=${
+                    <div class="card-body" onclick="location.href='./html/movieDetails.html?slug=${
                       movie.slug
                     }'">
                         <h5 class="card-title" title="${movie.name}">${
@@ -122,7 +122,7 @@ function displayNewMovies(movies) {
     const movieDiv = document.createElement("div");
     movieDiv.className = "col-lg-3 col-md-4 col-sm-6 col-12 my-3";
     movieDiv.onclick = () =>
-      (location.href = `./movieDetails.html?slug=${movie.slug}`);
+      (location.href = `./html/movieDetails.html?slug=${movie.slug}`);
 
     // Xác định số tập từ dữ liệu API (có thể là episode_current, current_episode, hoặc episode)
     const episodeCurrent =
@@ -136,7 +136,7 @@ function displayNewMovies(movies) {
                          alt="${movie.name}"
                          loading="lazy"
                          onerror="this.src='https://via.placeholder.com/300x450?text=No+Image'">
-                    <div class="card-overlay" onclick="location.href='./movieDetails.html?slug=${
+                    <div class="card-overlay" onclick="location.href='./html/movieDetails.html?slug=${
                       movie.slug
                     }'">
                         <div class="overlay-content">
@@ -154,7 +154,7 @@ function displayNewMovies(movies) {
                         <i class="fas fa-bookmark"></i>
                     </div>
                 </div>
-                <div class="card-body" onclick="location.href='./movieDetails.html?slug=${
+                <div class="card-body" onclick="location.href='./html/movieDetails.html?slug=${
                   movie.slug
                 }'">
                     <h5 class="card-title" title="${movie.name}">${
