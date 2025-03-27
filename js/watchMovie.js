@@ -89,7 +89,7 @@ function displayMovieInfo(movie) {
     `;
     
     // Cập nhật tiêu đề trang
-    document.title = `Xem phim ${movie.name} - Yuki Movie`;
+    document.title = `Xem phim ${movie.name} - Xenos Movie`;
 }
 
 // Hiển thị danh sách tập phim

@@ -321,7 +321,7 @@ function initSearchPage() {
     
     if (keyword) {
         document.getElementById('searchKeyword').textContent = keyword;
-        document.title = `Tìm kiếm: ${keyword} - Yuki Movie`;
+        document.title = `Tìm kiếm: ${keyword} - Xenos Movie`;
         
         // Đặt giá trị từ khóa vào ô tìm kiếm
         const searchInput = document.getElementById('searchInput');
