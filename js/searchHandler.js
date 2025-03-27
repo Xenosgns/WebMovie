@@ -24,7 +24,7 @@ searchInput.addEventListener('keypress', function(e) {
         e.preventDefault();
         const keyword = this.value.trim();
         if (keyword.length > 0) {
-            window.location.href = `./search.html?keyword=${encodeURIComponent(keyword)}`;
+            window.location.href = `./html/search.html?keyword=${encodeURIComponent(keyword)}`;
         }
     }
 });
@@ -33,7 +33,7 @@ searchInput.addEventListener('keypress', function(e) {
 document.querySelector('.btn-outline-light').addEventListener('click', function() {
     const keyword = searchInput.value.trim();
     if (keyword.length > 0) {
-        window.location.href = `./search.html?keyword=${encodeURIComponent(keyword)}`;
+        window.location.href = `./html/search.html?keyword=${encodeURIComponent(keyword)}`;
     }
 });
 
@@ -68,7 +68,7 @@ function displaySuggestions(movies) {
         }
         
         suggestionsHTML += `
-            <div class="suggestion-item" onclick="location.href='./movieDetails.html?slug=${movie.slug}'">
+            <div class="suggestion-item" onclick="location.href='./html/movieDetails.html?slug=${movie.slug}'">
                 <img src="https://phimimg.com/${movie.poster_url}" 
                      class="suggestion-poster" 
                      alt="${movie.name}"
