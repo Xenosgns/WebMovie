@@ -48,7 +48,7 @@ function displayMovies(movies) {
                              alt="${movie.name || 'No Name'}"
                              loading="lazy"
                              onerror="this.src='https://via.placeholder.com/300x450?text=No+Image'; this.onerror=null;">
-                        <div class="card-overlay" onclick="location.href='./html/movieDetails.html?slug=${movie.slug}'">
+                        <div class="card-overlay" onclick="location.href='./movieDetails.html?slug=${movie.slug}'">
                             <div class="overlay-content">
                                 <span class="btn-play">
                                     <i class="fas fa-play-circle fa-3x"></i>
@@ -60,7 +60,7 @@ function displayMovies(movies) {
                             <i class="fas fa-bookmark"></i>
                         </div>
                     </div>
-                    <div class="card-body" onclick="location.href='./html/movieDetails.html?slug=${movie.slug}'">
+                    <div class="card-body" onclick="location.href='./movieDetails.html?slug=${movie.slug}'">
                         <h5 class="card-title" title="${movie.name || 'No Name'}">${movie.name || 'No Name'}</h5>
                         <p class="card-text" title="${movie.origin_name || 'No Origin Name'}">${movie.origin_name || 'No Origin Name'}</p>
                         <p class="card-text">
