@@ -1,0 +1,1297 @@
+/* Base Styles */
+:root {
+  --primary-color: #ff3d00;
+  --primary-light: #ff9e80;
+  --primary-dark: #dd2c00;
+  --bg-dark: #131419;
+  --bg-darker: #0d0f13;
+  --text-light: #fff;
+  --text-gray: #bab2b5;
+  --card-bg: #1e2129;
+  --card-hover: #272a33;
+  --transition-slow: all 0.5s ease;
+  --transition-normal: all 0.3s ease;
+  --transition-fast: all 0.2s ease;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reset mặc định */
+body {
+  font-family: 'Arial', sans-serif;
+  /* Sử dụng font dễ đọc */
+  background-color: #1a1a1a;
+  /* Nền tối để tương phản tốt hơn */
+  color: #e0e0e0;
+  /* Màu chữ chính là xám nhạt */
+  line-height: 1.6;
+}
+
+/* Container chính */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card-poster {
+  position: relative;
+}
+
+.episode-badge {
+  position: absolute;
+  left: 10px;
+  /* Changed from right to left */
+  top: 10px;
+  background: rgb(71, 132, 19);
+  color: #fff;
+  padding: 4px 6px 2px;
+  z-index: 9;
+  border-radius: 2px;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, #C02425 0%, #F0CB35 51%, #C02425 100%);
+  transition: .7s;
+  text-transform: capitalize;
+  min-width: fit-content;
+  max-width: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.movie-card:hover .episode-badge {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Bookmark css */
+.bookmark-badge i {
+  transition: transform 0.3s ease;
+}
+
+.bookmark-badge.active i {
+  transform: scale(1.2);
+  color: #F0CB35;
+}
+
+.bookmark-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.bookmark-badge i {
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.bookmark-badge:hover {
+  transform: scale(1.15);
+  background: rgba(255, 61, 0, 0.8);
+}
+
+.bookmark-badge.active {
+  background: var(--primary-color);
+}
+
+.bookmark-badge.active i {
+  color: white;
+  transform: scale(1.1);
+}
+
+.bookmark-badge.remove-btn {
+  background-color: rgba(255, 0, 0, 0.7);
+  /* Màu đỏ nhạt */
+  color: white;
+}
+
+.bookmark-badge.remove-btn:hover {
+  background-color: #ff0000;
+  /* Màu đỏ đậm khi hover */
+  transform: scale(1.1);
+}
+
+.bookmark-badge.remove-btn .fa-times {
+  font-size: 18px;
+  /* Điều chỉnh kích thước icon X */
+}
+
+/* Hiệu ứng khi click vào bookmark */
+.bookmark-badge.clicked {
+  animation: bookmark-pulse 0.5s ease;
+}
+
+@keyframes bookmark-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.name-main {
+  color: #cf8e19;
+}
+
+.name-sub {
+  color: #a0a0a0;
+}
+
+.btn-move-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-donate {
+  --clr-font-main: hsla(0 0% 20% / 100);
+  --btn-bg-1: hsla(14, 100%, 50%, 1);
+  /* Màu cam đỏ (#ff3d00) */
+  --btn-bg-2: hsla(14, 100%, 30%, 1);
+  /* Màu cam đỏ tối hơn (#c30000) */
+  --btn-bg-color: hsla(360 100% 100% / 1);
+  --radii: 0.5em;
+  cursor: pointer;
+  padding: 0.9em 1.4em;
+  min-width: 120px;
+  min-height: 44px;
+  font-size: var(--size, 1rem);
+  font-weight: 500;
+  transition: 0.8s;
+  background-size: 280% auto;
+  background-image: linear-gradient(325deg,
+      var(--btn-bg-2) 0%,
+      var(--btn-bg-1) 55%,
+      var(--btn-bg-2) 90%);
+  border: none;
+  border-radius: var(--radii);
+  color: var(--btn-bg-color);
+  box-shadow:
+    0px 0px 20px rgba(255, 61, 0, 0.5),
+    /* Thay đổi màu shadow */
+    0px 5px 5px -1px rgba(195, 0, 0, 0.25),
+    /* Thay đổi màu shadow */
+    inset 4px 4px 8px rgba(255, 158, 128, 0.5),
+    /* Thay đổi màu shadow nội */
+    inset -4px -4px 8px rgba(195, 0, 0, 0.35);
+  /* Thay đổi màu shadow nội */
+  margin: 0 0;
+}
+
+
+/* From Uiverse.io by Li-Deheng */
+.btn-conteiner {
+  display: flex;
+  justify-content: center;
+  --color-text: #ffffff;
+  --color-background: #ff135a;
+  --color-outline: #ff145b80;
+  --color-shadow: #00000080;
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  padding: 5px 30px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: 1s;
+  border-radius: 100px;
+  box-shadow: 0 0 0.2em 0 var(--color-background);
+}
+
+.btn-content:hover,
+.btn-content:focus {
+  transition: 0.5s;
+  -webkit-animation: btn-content 1s;
+  animation: btn-content 1s;
+  outline: 0.1em solid transparent;
+  outline-offset: 0.2em;
+  box-shadow: 0 0 0.4em 0 var(--color-background);
+}
+
+.btn-content .icon-arrow {
+  transition: 0.5s;
+  margin-right: 0px;
+  transform: scale(0.6);
+}
+
+.btn-content:hover .icon-arrow {
+  transition: 0.5s;
+  margin-right: 25px;
+}
+
+.icon-arrow {
+  width: 20px;
+  margin-left: 15px;
+  position: relative;
+  top: 6%;
+}
+
+/* SVG */
+#arrow-icon-one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+#arrow-icon-two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.btn-content:hover #arrow-icon-three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.btn-content:hover #arrow-icon-one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.btn-content:hover #arrow-icon-two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+/* SVG animations */
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+
+  50% {
+    fill: var(--color-background);
+  }
+
+  100% {
+    fill: white;
+  }
+}
+
+/* Button animations */
+@-webkit-keyframes btn-content {
+  0% {
+    outline: 0.2em solid var(--color-background);
+    outline-offset: 0;
+  }
+}
+
+@keyframes btn-content {
+  0% {
+    outline: 0.2em solid var(--color-background);
+    outline-offset: 0;
+  }
+}
+
+/* Tiêu đề phim */
+.movie-details h1 {
+  color: #cf8e19;
+  /* Màu trắng nổi bật cho tiêu đề chính */
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Nút xem phim */
+.btn-follow-movie {
+  padding: 8px 12px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 500;
+  transition: 0.5s;
+  transition-property: box-shadow;
+  background: #4CAF50;
+  box-shadow: 0 0 25px rgba(76, 175, 80, 0.5);
+  margin-left: 30px;
+}
+
+.btn-follow-movie:hover {
+  box-shadow: 0 0 5px #4CAF50,
+    0 0 25px #4CAF50,
+    0 0 50px #4CAF50,
+    0 0 100px #4CAF50;
+}
+
+.btn-follow-movie.active {
+  background: #f44336;
+  box-shadow: 0 0 25px rgba(244, 67, 54, 0.5);
+}
+
+.btn-follow-movie.active:hover {
+  box-shadow: 0 0 5px #f44336,
+    0 0 25px #f44336,
+    0 0 50px #f44336,
+    0 0 100px #f44336;
+}
+
+/* Thêm container cho các nút */
+.movie-buttons {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-play-movie {
+  padding: 8px 12px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 500;
+  transition: 0.5s;
+  transition-property: box-shadow;
+}
+
+.btn-play-movie {
+  background: rgb(0, 140, 255);
+  box-shadow: 0 0 25px rgb(0, 140, 255);
+}
+
+.btn-play-movie:hover {
+  box-shadow: 0 0 5px rgb(0, 140, 255),
+    0 0 25px rgb(0, 140, 255),
+    0 0 50px rgb(0, 140, 255),
+    0 0 100px rgb(0, 140, 255);
+}
+
+.movie-details .name-sub {
+  color: #a0a0a0;
+  /* Màu xám nhạt cho tên gốc */
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* Màu của trang thái */
+.status-badge {
+  padding: 3px 7px;
+  color: #fff;
+  background-size: 300% 100%;
+  background-image: linear-gradient(to right, #25aae1, #043ea5, #04befe, #3f86ed);
+  border-radius: 3px;
+  font-size: 15px;
+  text-transform: capitalize;
+
+}
+
+/* Thông tin chi tiết */
+.body-test-details {
+  background-color: #2d2d2d;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.body-test-details p {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  color: #d0d0d0;
+  /* Màu xám nhạt cho nội dung */
+}
+
+.body-test-details strong {
+  color: #ffffff;
+  /* Màu trắng cho tiêu đề trong nội dung */
+}
+
+/* Badges */
+.movie-meta .badge {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge.bg-primary {
+  background-color: #007bff;
+}
+
+.badge.bg-secondary {
+  background-color: #6c757d;
+}
+
+.badge.bg-success {
+  background-color: #28a745;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545;
+}
+
+/* Nội dung phim */
+.movie-content {
+  background-color: #2d2d2d;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: #c0c0c0;
+  /* Màu xám nhạt cho nội dung phim */
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+.movie-content h4 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+
+}
+
+/*Responsive design */
+@media (max-width: 768px) {
+  .movie-details h1 {
+    font-size: 2rem;
+  }
+
+  .movie-details .name-sub {
+    font-size: 1rem;
+  }
+
+  .body-test-details,
+  .movie-content {
+    padding: 10px;
+  }
+
+}
+
+/* Tối ưu hóa hiển thị trên màn hình nhỏ */
+@media (max-width: 576px) {
+  .movie-meta .badge {
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .episode-grid {
+    .episode-grid {
+      /* Giảm kích thước tối thiểu của cột để hiển thị nhiều tập hơn trên màn hình nhỏ */
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      gap: 0.3rem;
+    }
+
+    .btn.btn-outline-primary {
+      font-size: 0.8rem;
+      /* Giảm kích thước chữ để hiển thị tốt hơn */
+      padding: 0.3rem 0.5rem;
+      /* Giảm padding cho nút */
+      white-space: nowrap;
+      /* Ngăn chữ bị xuống dòng trong nút */
+    }
+
+  }
+  .bookmark-header {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Thay đổi từ center thành space-between */
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .bookmark-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .bookmark-actions {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 140px;
+    right: 0;
+  }
+  
+  .back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+
+  .movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 5px;
+    padding: 10px 0 20px;
+  }
+
+  .card-poster {
+    height: 270px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    height: 100px;
+  }
+
+  .movie-card {
+    height: 10%;
+  }
+
+  .movie-meta {
+    display: flex;
+  }
+}
+
+.episodeList {
+  display: block;
+  background-color: #1a1a1a;
+}
+
+
+.name-sub {
+  color: var(--text-gray);
+}
+
+/* Navbar Styles */
+.navbar {
+  position: relative;
+  z-index: 2001;
+  background-color: rgba(13, 15, 19, 0.9) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  padding: 12px 0;
+  transition: var(--transition-normal);
+  border-bottom: 1px solid rgba(255, 61, 0, 0.2);
+}
+
+.navbar.scrolled {
+  padding: 8px 0;
+}
+
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--primary-color) !important;
+  transition: var(--transition-normal);
+  position: sticky;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--text-light);
+  font-weight: 500;
+  padding: 8px 16px;
+  margin: 0 4px;
+  border-radius: 4px;
+  transition: var(--transition-normal);
+}
+
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  background: rgba(255, 61, 0, 0.1);
+  color: var(--primary-light);
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+  background: var(--primary-color);
+  color: white !important;
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+/* Search Box */
+.form-control {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 10px 20px;
+  transition: var(--transition-normal);
+  color: var(--text-light) !important;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 1;
+}
+
+.form-control:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(255, 61, 0, 0.25);
+  color: var(--text-light) !important;
+
+}
+
+.search-btn {
+  border-radius: 30px;
+  padding: 8px 20px;
+  border-color: var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  transition: var(--transition-fast);
+
+}
+
+.search-btn:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+/* Search Suggestions */
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 2000;
+  display: none;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+}
+
+.search-suggestions.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.suggestion-item {
+  padding: 12px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition-fast);
+}
+
+.suggestion-item:hover {
+  background-color: rgba(255, 61, 0, 0.1);
+}
+
+.suggestion-poster {
+  width: 60px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: var(--transition-fast);
+}
+
+.suggestion-item:hover .suggestion-poster {
+  transform: scale(1.05);
+}
+
+.suggestion-info {
+  flex: 1;
+}
+
+.suggestion-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.suggestion-meta {
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+/* Section Titles */
+.section-title {
+  position: relative;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.section-title i {
+  color: var(--primary-light);
+}
+
+@media (max-width: 768px) {
+
+  /* Movie Card Styles */
+
+}
+
+
+
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  background-color: var(--dark-bg-lighter, #1c1e25);
+  border: none;
+  border-radius: 8px;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card-poster {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-top {
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.movie-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  text-align: center;
+}
+
+.btn-play {
+  color: var(--primary-light);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.movie-type {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: white;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-text {
+  font-size: 0.85rem;
+  color: var(--text-muted, #b0b0b0);
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text {
+  color: var(--text-muted, #b0b0b0);
+  font-size: 0.8rem;
+}
+
+.movie-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.genre-tag {
+  font-size: 12px;
+  color: var(--text-light);
+  background-color: rgba(255, 61, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Pagination Styles */
+.pagination {
+  margin-top: 2rem;
+}
+
+.page-link {
+  color: var(--text-light);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0 5px;
+  border-radius: 50%;
+}
+
+/* Styling for movie grid layout */
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Hover effects for movie cards */
+.movie-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #222;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Movie card content styling */
+.movie-info {
+  padding: 10px;
+}
+
+.movie-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0 5px 0;
+  color: #fff;
+}
+
+.movie-subtitle {
+  font-size: 14px;
+  color: #aaa;
+  margin: 0 0 5px 0;
+}
+
+/* Styling for status indicators like "Hoàn Tất" */
+.movie-status {
+  display: inline-block;
+  background-color: rgba(0, 150, 50, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Search input styling */
+.search-input {
+  padding: 10px 15px;
+  border-radius: 20px 0 0 20px;
+  border: none;
+  background-color: #333;
+  color: white;
+  width: 250px;
+  outline: none;
+}
+
+.search-button {
+  padding: 10px 15px;
+  border-radius: 0 20px 20px 0;
+  border: none;
+  background-color: #ff4500;
+  color: white;
+  cursor: pointer;
+}
+
+/* Search result item styling */
+.search-result-item {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background-color: #333;
+}
+
+.search-result-image {
+  width: 50px;
+  height: 70px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.search-result-info {
+  flex: 1;
+}
+
+.search-result-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.search-result-year {
+  color: #aaa;
+  font-size: 13px;
+}
+
+/* Page title styling */
+.page-title {
+  font-size: 24px;
+  margin: 20px;
+  color: white;
+  font-weight: 500;
+  border-left: 4px solid #ff4500;
+  padding-left: 10px;
+}
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .movie-card {
+    width: calc(50% - 20px);
+  }
+
+  .header {
+    flex-direction: column;
+  }
+
+  .nav-menu {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .search-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .search-input {
+    width: calc(100% - 100px);
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-card {
+    width: 100%;
+  }
+}
+
+
+/* Footer styling */
+.footer {
+  background-color: #1a1a1a;
+  padding: 20px;
+  text-align: center;
+  color: #888;
+  margin-top: 30px;
+  border-top: 1px solid #333;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #ff4500;
+}
+
+/* Bookmark icon trong header */
+.navbar .nav-link .fa-bookmark {
+  color: var(--primary-light);
+  transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover .fa-bookmark {
+  transform: scale(1.2);
+  color: var(--primary-color);
+}
+
+/* Badge hiển thị số lượng bookmark */
+.bookmark-count {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  transform-origin: center;
+
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Hiệu ứng khi có bookmark mới */
+.bookmark-count.new {
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-5px);
+  }
+
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Trang bookmark.html */
+.bookmark-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bookmark-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bookmark-title i {
+  color: var(--primary-color);
+  font-size: 1.5em;
+}
+
+.bookmark-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.bookmark-actions button {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.bookmark-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 61, 0, 0.3);
+}
+
+/* Hiệu ứng cho thông báo không có bookmark */
+.no-bookmarks-container {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: 30px 0;
+}
+
+.no-bookmarks-icon {
+  font-size: 64px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.no-bookmarks-container h3 {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.no-bookmarks-container p {
+  margin-bottom: 25px;
+  color: var(--text-muted);
+}
+
+.no-bookmarks-container .btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.no-bookmarks-container .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 61, 0, 0.4);
+}
+
+/* Hiệu ứng cho toast notification */
+.toast-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease, fadeOut 0.3s 2.2s forwards;
+}
+
+.toast-notification i {
+  color: var(--primary-color);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
